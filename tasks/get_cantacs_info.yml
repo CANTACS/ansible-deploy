@@ -4,3 +4,20 @@
     repo: git@github.com:CANTACS/system-info.git
     dest: /cantacs-sysinfo
     version: main
+
+- name: Read peer data contents into a variable
+  set_fact:
+    peer_data: "{{ lookup('file', '/cantacs-sysinfo/peer_list.yml') | from_yaml }}"
+
+- name: Generate peer data set_fact
+  set_fact:
+    set_fact_task: "{{ 'peer_' ~ item.peerid ~ '_password: \"' ~ item.peerpassword ~ '\"' }}"
+  loop: "{{ peer_data.peer_list }}"
+
+- name: Include the dynamically generated peer data set_fact
+  include_vars:
+    name: "{{ set_fact_task }}"
+
+- name: Read LLA keys into a variable
+  set_fact:
+    lla_keys: "{{ lookup('file', '/cantacs-sysinfo/LLA_keys.yml') | from_yaml }}"
