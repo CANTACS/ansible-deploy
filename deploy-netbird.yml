@@ -1,0 +1,23 @@
+---
+- hosts: fne
+  become: true
+  vars:
+    # Netbird Variables
+    management_url: "https://netbird.cantacs.com"
+    setup_key_name: "Ansible Key Automation"
+    netbird_token: "{{ lookup('community.general.onepassword', 'Netbird Token', field='credential', vault='CANTACS') }}"
+    # Define environments with specific group IDs
+    environments:
+      site:
+        group_id: "cpqoho1angvc73eatuu0"
+      fne:
+        group_id: "cpqoh29angvc73eatut0"
+    # Select environment here (site or fne)
+    selected_environment: "fne"
+    groups_ids: "{{ environments[selected_environment].group_id }}"
+
+  tasks:
+    - name: Include Netbird setup tasks
+      include_tasks: tasks/setup_netbird.yml
+
+## Run this as ansible-playbook netbird_setup.yml -i 'user@ipaddress,' ##
