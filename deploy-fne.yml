@@ -1,0 +1,39 @@
+---
+- hosts: fne
+  become: true
+  vars:
+    ### Role Variables
+    # Set this variable to install/reinstall the DVM Project FNE to the host. This might be useful to turn off if you use the role to regenerate the configs.
+    install: true
+    # Set this to true if Netbird is installed on the host
+    use_netbird: true
+    # Set this variable to install the DVM Provisioning Manager to the FNE host
+    dvmprov: true
+
+    ### UFW Variables
+    # Set this to true to enable UFW firewall configuration
+    setup_ufw: false
+    # Set this to true to reset UFW configuration prior to applying the new configuration
+    reset: false
+    # Set this to true to enable port 80 (HTTP) access
+    http: false
+    # Set this to true to enable port 443 (HTTPS) access
+    https: false
+    # Set this to true to open the FNE port (used for non-VPN connections)
+    open_fne_port: true
+
+    ### File Locations
+    rid_config_file: "./cantacs-sysinfo/rid_config.yml"
+    tg_config_file: "./cantacs-sysinfo/tg_config.yml"
+    peerlist_config_file: "./cantacs-sysinfo/peer_list.yml"
+
+  pre_tasks:
+    - name: Include UFW firewall configuration tasks
+      include_tasks: tasks/ufw_tasks.yml
+      when: setup_ufw
+
+    - name: Get CANTACS system info
+      include_tasks: tasks/get_cantacs_info.yml
+
+  roles:
+    - fne_role
