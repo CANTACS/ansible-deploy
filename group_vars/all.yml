@@ -1,0 +1,16 @@
+# Variable setting the name of the folder where all DVM tools will be installed
+dvm_folder: "cantacs"
+
+## System Variables ##
+
+# Patch Super Group
+pSuperGroup: FFFE
+
+# Announcment Talkgroup
+announcementGroup: AAAA
+
+# P25 Network ID (WACN)
+netId: 5C077
+
+# P25 System ID
+sysId: E02
