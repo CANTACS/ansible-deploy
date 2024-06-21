@@ -1,0 +1,6 @@
+---
+- name: Clone CANTACS private repository
+  ansible.builtin.git:
+    repo: git@github.com:CANTACS/system-info.git
+    dest: /cantacs-sysinfo
+    version: main
