@@ -6,7 +6,7 @@ peerId: 50101
 fne_port: 62925
 
 # FNE access password.
-password: "{{ lookup('community.general.onepassword', 'FNE', field='password', vault='CANTACS') }}"
+fne_password: "{{ lookup('community.general.onepassword', 'FNE', field='password', vault='CANTACS') }}"
 
 # Flag indicating whether or not master endpoint networking is encrypted.
 encrypted: true
