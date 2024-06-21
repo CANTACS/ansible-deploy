@@ -1,0 +1,102 @@
+ansible_user: cantacs
+
+
+fne_address: fne.cantacs.com
+fne_port: 62925
+fne_password: "{{ peer_2101_password }}"
+
+# Set DVRS mode - if false, choose if you want to use one or two voice channels
+dvrs_mode: false
+dual_voice_channel: true
+# NOTE: If dvrs_mode is true, dual_voice_channel is ignored
+
+chid_details:
+  - chid: 2
+    base_freq: 450000000
+    input_offset: 5.000
+  - chid: 3
+    base_freq: 146000000
+    input_offset: 1.000
+
+# Site ID in HEX format.
+SiteID: 15
+
+# P25 Network Access Code (NAC). (Rx/Tx)
+# 2 first digits of SysID, last digit of SiteID (HEX).
+site_nac: E05
+
+cc:
+  # Network Peer ID
+  peer_id: 2101
+  # IP address of the network interface to listen for REST API on (or 0.0.0.0 for all).
+  restAddress: 127.0.0.1
+  # Port number for REST API to listen on.
+  restPort: 9991
+  # Textual label of this host.
+  host_identity: 021CC1
+  # Channel Identity (corresponds to the appropriate entry in the iden_table file).
+  iden_channel: 2
+  # Channel Number (used to calculate actual host frequency based on the identity table).
+  # HEX Format
+  control_channel: 7DA
+  # UART/RS232 serial port device.
+  modem_port: /dev/ttyAMA0
+
+vc1:
+  # Network Peer ID
+  peer_id: 2102
+  # IP address of the network interface to listen for REST API on (or 0.0.0.0 for all).
+  restAddress: 127.0.0.1
+  # Port number for REST API to listen on.
+  restPort: 9992
+  # Textual label of this host.
+  identity: 021VC1
+  # Channel Identity (corresponds to the appropriate entry in the iden_table file).
+  iden_channel: 2
+  # Channel Number (used to calculate actual host frequency based on the identity table).
+  # HEX Format
+  voice_channel: 7EE
+  # UART/RS232 serial port device.
+  modem_port: /dev/ttyUSB0
+
+vc2:
+  # Network Peer ID
+  peer_id: 2103
+  # IP address of the network interface to listen for REST API on (or 0.0.0.0 for all).
+  restAddress: 127.0.0.1
+  # Port number for REST API to listen on.
+  restPort: 9993
+  # Textual label of this host.
+  identity: 021VC2
+  # Channel Identity (corresponds to the appropriate entry in the iden_table file).
+  iden_channel: 2
+  # Channel Number (used to calculate actual host frequency based on the identity table).
+  # HEX Format
+  voice_channel: 7F2
+  # UART/RS232 serial port device.
+  modem: /dev/ttyUSB1
+
+# AES-128 16-byte Key (used for LLA)
+#   (This field *must* be 16 hex bytes in length or 32 characters
+#    0 - 9, A - F.)
+LLA_Key: "{{ lla_keys['2101'] }}"
+LLA_Active: false
+
+# Patch Super Group.
+pSuperGroup: FFFE
+# Announcment Talkgroup Group.
+announcementGroup: 911
+
+# Flag indicating whether the local host lookup tables will be saved to local files when updated from the network
+# This is handy if your site occasionally operates in site trunking mode without a connection to the FNE
+saveLookups: false
+
+# Sets the local time offset from GMT.
+localTimeOffset: -4
+
+# REST API authentication password.
+restPassword: "{{ peer_2101_password }}"
+
+control:
+  # Flag to enable optional TIME_DATE_ANNC TSBK during a CC broadcast.
+  enableTimeDateAnn: true
