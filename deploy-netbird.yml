@@ -20,4 +20,4 @@
     - name: Include Netbird setup tasks
       include_tasks: tasks/setup_netbird.yml
 
-## Run this as ansible-playbook netbird_setup.yml -i 'user@ipaddress,' ##
+## Run this as ansible-playbook deploy_netbird.yml -i 'user@ipaddress,' - don't forget the comma at the end ##
