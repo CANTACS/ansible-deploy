@@ -1,5 +1,5 @@
 ---
-- hosts: fne
+- hosts: all
   become: true
   vars:
     # Netbird Variables
