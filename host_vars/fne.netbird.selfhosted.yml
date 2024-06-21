@@ -1,0 +1,58 @@
+
+# Network Peer ID
+peerId: 50101
+
+# Port number to listen on.
+fne_port: 62925
+
+# FNE access password.
+password: "{{ lookup('community.general.onepassword', 'FNE', field='password', vault='CANTACS') }}"
+
+# Flag indicating whether or not master endpoint networking is encrypted.
+encrypted: true
+# AES-256 32-byte Preshared Key
+#   (This field *must* be 32 hex bytes in length or 64 characters
+#    0 - 9, A - F.)
+presharedKey: "{{ lookup('community.general.onepassword', 'FNE', field='AES_PSK', vault='CANTACS') }}"
+
+# Flag indicating whether or not DMR traffic will be passed.
+allowDMRTraffic: true
+# Flag indicating whether or not P25 traffic will be passed.
+allowP25Traffic: true
+# Flag indicating whether or not NXDN traffic will be passed.
+allowNXDNTraffic: false
+
+# Delay from when a call on a parrot TG ends to when the playback starts (in milliseconds).
+parrotDelay: 2000
+# Flag indicating whether or not a parrot TG call will generate a grant demand.
+parrotGrantDemand: true
+# Flag indicating whether or not a parrot TG call will only be sent to the originating peer.
+parrotOnlyToOrginiatingPeer: false
+
+# Flag indicating the TGID information for this master will be sent to its peers.
+sendTalkgroups: true
+
+# Flag indicating whether or not REST API is enabled.
+restEnable: true
+# IP address of the network interface to listen for REST API on (or 0.0.0.0 for all).
+restAddress: 127.0.0.1
+# Port number for REST API to listen on.
+restPort: 9990
+
+# REST API authentication password.
+restPassword: "{{ lookup('community.general.onepassword', 'FNE', field='rest_password', vault='CANTACS') }}"
+
+# Amount of time between updates of talkgroup rules file. (minutes)
+tg_time: 30
+
+# Amount of time between updates of Radio ID ACL file. (minutes)
+rid_time: 2
+
+
+# Peer whitelist and blacklist configuration
+# Flag indicating whether or not the peer ACLs are enabled.
+peer_acl_enabled: true
+# Peer ACL mode: whitelist or blacklist
+peer_acl_mode: whitelist
+# Amount of time between updates of white/blacklist file. (minutes)
+peer_acl_time: 2
