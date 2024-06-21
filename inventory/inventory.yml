@@ -1,0 +1,9 @@
+all:
+  children:
+    fne:
+      hosts:
+        fne.netbird.selfhosted:
+          ansible_user: debian
+      sites:
+        hosts:
+          site021.netbird.selfhosted: {}
