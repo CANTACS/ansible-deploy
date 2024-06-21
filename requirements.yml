@@ -1,0 +1,5 @@
+- name: fne_role
+  src: https://github.com/CANTACS/fne-role.git
+
+- name: host_role
+  src: https://github.com/CANTACS/host-role.git
