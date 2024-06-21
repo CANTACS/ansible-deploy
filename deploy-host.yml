@@ -1,0 +1,10 @@
+---
+- hosts: sites
+  become: true
+  vars:
+    ### Role Variables
+    # Set this to true if Netbird is installed on the host
+    use_netbird: true
+
+  roles:
+    - host_role
