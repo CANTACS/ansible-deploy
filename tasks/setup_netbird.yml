@@ -1,0 +1,51 @@
+---
+- name: Check if Netbird is installed
+  ansible.builtin.command:
+    cmd: netbird --version
+  register: netbird_version
+  failed_when: netbird_version.rc != 0
+
+- name: Install Netbird
+  ansible.builtin.shell:
+    cmd: curl -fsSL https://pkgs.netbird.io/install.sh | sh
+  register: install_result
+  failed_when: install_result.rc != 0
+  when: netbird_version.rc != 0
+
+- name: Post request to get setup key
+  ansible.builtin.uri:
+    url: "{{ management_url }}/api/setup-keys"
+    method: POST
+    body_format: json
+    body: >
+      {
+        "name": "{{ setup_key_name }}",
+        "type": "one-off",
+        "expires_in": 86400,
+        "revoked": false,
+        "auto_groups": ["{{ groups_ids }}"],
+        "usage_limit": 1,
+        "ephemeral": true
+      }
+    headers:
+      Accept: application/json
+      Content-Type: application/json
+      Authorization: "Token {{ netbird_token }}"
+    status_code: 200
+    return_content: true
+  register: setup_key_response
+  failed_when: setup_key_response.status != 200
+
+- name: Extract the setup key
+  ansible.builtin.set_fact:
+    setup_key: "{{ (setup_key_response.content | from_json).key }}"
+
+- name: Execute netbird up command
+  ansible.builtin.shell:
+    cmd: "netbird up --management-url {{ management_url }} --setup-key {{ setup_key }}"
+  register: netbird_up_result
+  failed_when: netbird_up_result.rc != 0
+
+- name: Output result
+  ansible.builtin.debug:
+    msg: "Netbird setup completed successfully."
