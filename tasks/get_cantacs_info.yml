@@ -1,5 +1,7 @@
 ---
-- name: Clone CANTACS private repository
+- name: Clone CANTACS private repository locally
+  delegate_to: localhost
+  connection: local
   ansible.builtin.git:
     repo: git@github.com:CANTACS/system-info.git
     dest: /cantacs-sysinfo
