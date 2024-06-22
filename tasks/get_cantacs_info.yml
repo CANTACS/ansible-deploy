@@ -2,9 +2,10 @@
 - name: Clone CANTACS private repository locally
   delegate_to: localhost
   connection: local
+  become: false
   ansible.builtin.git:
     repo: git@github.com:CANTACS/system-info.git
-    dest: /cantacs-sysinfo
+    dest: ./cantacs-sysinfo
     version: main
 
 - name: Read peer data contents into a variable
