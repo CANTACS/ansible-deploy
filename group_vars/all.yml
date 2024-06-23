@@ -10,7 +10,7 @@ system_pSuperGroup: FFFE
 system_announcementGroup: AAAA
 
 # P25 Network ID (WACN)
-netId: 5C077
+system_WACN: 5C077
 
 # P25 System ID
-sysId: E02
+system_sysId: E02
