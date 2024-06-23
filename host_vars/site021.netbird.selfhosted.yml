@@ -74,7 +74,7 @@ vc2:
   # HEX Format
   voice_channel: 7F2
   # UART/RS232 serial port device.
-  modem: /dev/ttyUSB1
+  modem_port: /dev/ttyUSB1
 
 # AES-128 16-byte Key (used for LLA)
 #   (This field *must* be 16 hex bytes in length or 32 characters
