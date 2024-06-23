@@ -25,7 +25,7 @@
         "revoked": false,
         "auto_groups": ["{{ groups_ids }}"],
         "usage_limit": 1,
-        "ephemeral": true
+        "ephemeral": false
       }
     headers:
       Accept: application/json
