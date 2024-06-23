@@ -4,6 +4,8 @@ ansible_user: cantacs
 fne_address: fne.cantacs.com
 fne_port: 62925
 fne_password: "{{ peer_2101_password }}"
+encrypted: true
+presharedKey: "{{ lookup('community.general.onepassword', 'FNE', field='AES_PSK', vault='CANTACS') }}"
 
 # Set DVRS mode - if false, choose if you want to use one or two voice channels
 dvrs_mode: false
