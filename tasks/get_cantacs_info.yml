@@ -21,8 +21,10 @@
   set_fact:
     peer_passwords: >-
       {{
-        dict(peer_data.peer_list | map(attribute='peerid') |
-              zip(peer_data.peer_list | map(attribute='peerpassword')))
+        dict(
+          peer_data.peer_list | map(attribute='peerid') | map('string') |
+          zip(peer_data.peer_list | map(attribute='peerpassword'))
+        )
       }}
 
 - name: Read LLA keys into a variable
