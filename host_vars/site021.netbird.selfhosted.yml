@@ -3,9 +3,9 @@ ansible_user: cantacs
 
 fne_address: fne.cantacs.com
 fne_port: 62925
-fne_password: "{{ peer_2101_password }}"
-encrypted: true
-presharedKey: "{{ lookup('community.general.onepassword', 'FNE', field='AES_PSK', vault='CANTACS') }}"
+fne_password: "{{ peer_passwords['2101'] }}"
+fne_encrypted: true
+fne_presharedKey: "{{ lookup('community.general.onepassword', 'FNE', field='AES_PSK', vault='CANTACS') }}"
 
 # Set DVRS mode - if false, choose if you want to use one or two voice channels
 dvrs_mode: false
@@ -81,7 +81,7 @@ vc2:
 # AES-128 16-byte Key (used for LLA)
 #   (This field *must* be 16 hex bytes in length or 32 characters
 #    0 - 9, A - F.)
-LLA_Key: "{{ lla_keys['2101'] }}"
+LLA_Key: "{{ lla_keys['site021'] }}"
 LLA_Active: false
 
 # Flag indicating whether the local host lookup tables will be saved to local files when updated from the network
@@ -92,7 +92,7 @@ saveLookups: false
 localTimeOffset: -4
 
 # REST API authentication password.
-restPassword: "{{ peer_2101_password }}"
+restPassword: "{{ peer_passwords['2101'] }}"
 
 control:
   # Flag to enable optional TIME_DATE_ANNC TSBK during a CC broadcast.
