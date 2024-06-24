@@ -14,11 +14,11 @@ dual_voice_channel: true
 
 chid_details:
   - chid: 2
-    base_freq: 450000000
-    input_offset: 5.000
-  - chid: 3
     base_freq: 146000000
     input_offset: 1.000
+  - chid: 3
+    base_freq: 450000000
+    input_offset: 5.000
 
 # Site ID in HEX format.
 SiteID: 15
