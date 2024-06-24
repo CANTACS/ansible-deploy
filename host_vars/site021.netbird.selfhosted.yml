@@ -37,7 +37,7 @@ cc:
   # Textual label of this host.
   host_identity: 021CC1
   # Channel Identity (corresponds to the appropriate entry in the iden_table file).
-  iden_channel: 2
+  iden_channel: 3
   # Channel Number (used to calculate actual host frequency based on the identity table).
   # HEX Format
   control_channel: 7DA
@@ -54,7 +54,7 @@ vc1:
   # Textual label of this host.
   host_identity: 021VC1
   # Channel Identity (corresponds to the appropriate entry in the iden_table file).
-  iden_channel: 2
+  iden_channel: 3
   # Channel Number (used to calculate actual host frequency based on the identity table).
   # HEX Format
   voice_channel: 7EE
@@ -71,7 +71,7 @@ vc2:
   # Textual label of this host.
   host_identity: 021VC2
   # Channel Identity (corresponds to the appropriate entry in the iden_table file).
-  iden_channel: 2
+  iden_channel: 3
   # Channel Number (used to calculate actual host frequency based on the identity table).
   # HEX Format
   voice_channel: 7F2
