@@ -44,6 +44,11 @@ cc:
   # UART/RS232 serial port device.
   modem_port: /dev/ttyAMA0
 
+  control:
+    # Flag to enable optional TIME_DATE_ANNC TSBK during a CC broadcast.
+    enableTimeDateAnn: true
+
+
 vc1:
   # Network Peer ID
   peer_id: 2102
@@ -93,7 +98,3 @@ localTimeOffset: -4
 
 # REST API authentication password.
 restPassword: "{{ peer_passwords['2101'] }}"
-
-control:
-  # Flag to enable optional TIME_DATE_ANNC TSBK during a CC broadcast.
-  enableTimeDateAnn: true
