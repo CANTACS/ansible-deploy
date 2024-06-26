@@ -1,0 +1,69 @@
+ansible_user: cantacs
+
+
+fne_address: fne.cantacs.com
+fne_port: 62925
+fne_password: "{{ peer_passwords['601'] }}"
+fne_encrypted: true
+fne_presharedKey: "{{ lookup('community.general.onepassword', 'FNE', field='AES_PSK', vault='CANTACS') }}"
+
+# Set DVRS mode - if false, choose if you want to use one or two voice channels
+dvrs_mode: false
+dual_voice_channel: false
+# NOTE: If dvrs_mode is true, dual_voice_channel is ignored
+
+chid_details:
+  - chid: 2
+    base_freq: 440000000
+    input_offset: -5.000
+
+# Site ID in HEX format.
+SiteID: 6
+
+# P25 Network Access Code (NAC). (Rx/Tx)
+# 2 first digits of SysID, last digit of SiteID (HEX).
+site_nac: E06
+
+cc:
+  # Network Peer ID
+  peer_id: 601
+  # IP address of the network interface to listen for REST API on (or 0.0.0.0 for all).
+  restAddress: 127.0.0.1
+  # Port number for REST API to listen on.
+  restPort: 9991
+  # Textual label of this host.
+  host_identity: 006CC1
+  # Channel Identity (corresponds to the appropriate entry in the iden_table file).
+  iden_channel: 2
+  # Channel Number (used to calculate actual host frequency based on the identity table).
+  # HEX Format
+  control_channel: 57C
+  # UART/RS232 serial port device.
+  modem_port: /dev/ttyAMA0
+
+vc1:
+  # Network Peer ID
+  peer_id: 602
+  # IP address of the network interface to listen for REST API on (or 0.0.0.0 for all).
+  restAddress: 127.0.0.1
+  # Port number for REST API to listen on.
+  restPort: 9992
+  # Textual label of this host.
+  host_identity: 006VC1
+  # Channel Identity (corresponds to the appropriate entry in the iden_table file).
+  iden_channel: 2
+  # Channel Number (used to calculate actual host frequency based on the identity table).
+  # HEX Format
+  voice_channel: 4DC
+  # UART/RS232 serial port device.
+  modem_port: /dev/ttyUSB0
+
+# Flag indicating whether the local host lookup tables will be saved to local files when updated from the network
+# This is handy if your site occasionally operates in site trunking mode without a connection to the FNE
+saveLookups: false
+
+# Sets the local time offset from GMT.
+localTimeOffset: -4
+
+# REST API authentication password.
+restPassword: "{{ peer_passwords['601'] }}"
