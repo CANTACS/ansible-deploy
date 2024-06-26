@@ -11,10 +11,10 @@ ansible-galaxy install -r roles/requirements.yml -p ./roles
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| install | Set this variable to install/reinstall the DVM Project FNE to the host. This might be useful to turn off if you use the role to regenerate the configs. | true | No |
-| use_netbird | Set this to true if Netbird is installed on the host | false | No |
-| dvm_folder | Set this variable to use a custom folder name throughout the role | dvm | No |
-| dvmprov | Set this variable to install the DVM Provisioning Manager to the FNE host | true | No |
+| `install` | Set this variable to install/reinstall the DVM Project FNE to the host. This might be useful to turn off if you use the role to regenerate the configs. | `true` | No |
+| `use_netbird` | Set this to true if Netbird is installed on the host | `false` | No |
+| `dvm_folder` | Set this variable to use a custom folder name throughout the role | `dvm` | No |
+| `dvmprov` | Set this variable to install the DVM Provisioning Manager to the FNE host | `true` | No |
 
 ### Limitations
 
@@ -26,8 +26,8 @@ It is **highly recommended** to set `install` to `true` if you make configuratio
 
 | Variable | Description | Default | Required |
 |----------|-------------|---------|----------|
-| use_netbird | Set this to true if Netbird is installed on the host | false | No |
-| dvm_folder | Set this variable to use a custom folder name throughout the role | dvm | No |
+| `use_netbird` | Set this to true if Netbird is installed on the host | `false` | No |
+| `dvm_folder` | Set this variable to use a custom folder name throughout the role | `dvm` | No |
 
 ### Limitations
 
