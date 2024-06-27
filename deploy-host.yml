@@ -5,6 +5,12 @@
     ### Role Variables
     # Set this to true if Netbird is installed on the host
     use_netbird: true
+    # Set this variable to force a rebuild using the GitHub action.  Rebuild will happen if the `dvmhost` project had changes since the last action run.
+    rebuild: false
+    # Set this variable to force the GitHub action to rebuild, regardless of whether the `dvmhost` project had changes since the last action run. `rebuild` *must* be set to `true` for this variable to be considered.
+    force_rebuild: false
+    # Set the required GitHub token for both variables above to be able to trigger the action
+    github_token: "{{ lookup('community.general.onepassword', 'GitHub Build Token', field='credential', vault='CANTACS') }}"
 
   pre_tasks:
     - name: Get CANTACS system info

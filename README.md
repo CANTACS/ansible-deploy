@@ -15,6 +15,8 @@ ansible-galaxy install -r roles/requirements.yml -p ./roles
 | `use_netbird` | Set this to true if Netbird is installed on the host | `false` | No |
 | `dvm_folder` | Set this variable to use a custom folder name throughout the role | `dvm` | No |
 | `dvmprov` | Set this variable to install the DVM Provisioning Manager to the FNE host | `true` | No |
+| `rebuild` | Set this variable to force a rebuild using the GitHub action.  Rebuild will happen if the `dvmhost` project had changes since the last action run. *GitHub token is mandatory.* | `false` | No |
+| `force_rebuild` | Set this variable to force the GitHub action to rebuild, regardless of whether the `dvmhost` project had changes since the last action run.  **`rebuild` *must* be set to `true` for this variable to be considered.** *GitHub token is mandatory.* | `false` | No |
 
 ### Limitations
 
@@ -28,6 +30,8 @@ It is **highly recommended** to set `install` to `true` if you make configuratio
 |----------|-------------|---------|----------|
 | `use_netbird` | Set this to true if Netbird is installed on the host | `false` | No |
 | `dvm_folder` | Set this variable to use a custom folder name throughout the role | `dvm` | No |
+| `rebuild` | Set this variable to force a rebuild using the GitHub action.  Rebuild will happen if the `dvmhost` project had changes since the last action run. *GitHub token is mandatory.* | `false` | No |
+| `force_rebuild` | Set this variable to force the GitHub action to rebuild, regardless of whether the `dvmhost` project had changes since the last action run.  **`rebuild` *must* be set to `true` for this variable to be considered.** *GitHub token is mandatory.* | `false` | No |
 
 ### Limitations
 
